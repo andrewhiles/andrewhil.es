@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Calculator App</title>
+
+    <!-- Dirty in-page CSS -->
+    <style>
+
+    /* http://meyerweb.com/eric/tools/css/reset/ 
+       v2.0 | 20110126
+       License: none (public domain)
+    */
+
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed, 
+    figure, figcaption, footer, header, hgroup, 
+    menu, nav, output, ruby, section, summary,
+    time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+    }
+
+    .mainImage {
+        max-width: 100%;
+        padding-bottom: 10px;
+    }
+
+    body {
+        font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Georgia";
+    }
+
+    .calculator {
+        padding-top: 10%;
+        padding-left: 33%;
+        padding-right: 33%;
+    }
+
+    .alert {
+        color: firebrick;
+        font-size: 30px;
+    }
+
+    .answer {
+        color: cadetblue;
+        font-size: 30px;
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="calculator">
+        
+        <h1>Calculator App</h1>
+        <input id="firstNum" type="number">
+        <input id="secondNum" type="number"><br>
+        <button id="btnAddition" type="button" onclick="performCalculation(this.id)">+</button>
+        <button id="btnSubtraction" type="button" onclick="performCalculation(this.id)">-</button>
+        <button id="btnMultiplication" type="button" onclick="performCalculation(this.id)">*</button>
+        <button id="btnDivision" type="button" onclick="performCalculation(this.id)">/</button>
+        <p id="result"></p>
+
+    </div>
+
+</body>
+
+    <!-- JS -->
+    <script>
+
+        function performCalculation(value) {
+
+            var operation = value.substring(3);
+            var numOne = document.getElementById('firstNum').value;
+            var numTwo = document.getElementById('secondNum').value; 
+            var result = document.getElementById('result');
+
+            if(numOne != 0 && numTwo != 0) {
+
+                switch(operation) {
+                    case 'Addition':
+                        result.innerHTML = parseFloat(numOne) + parseFloat(numTwo);
+                        result.classList.remove('alert');
+                        result.classList.add('answer');
+                    break;
+
+                    case 'Subtraction':
+                        result.innerHTML = parseFloat(numOne) - parseFloat(numTwo);
+                        esult.classList.remove('alert');
+                        result.classList.add('answer');
+                    break;
+
+                    case 'Multiplication':
+                        result.innerHTML = parseFloat(numOne) * parseFloat(numTwo);
+                        esult.classList.remove('alert');
+                        result.classList.add('answer');
+                    break;
+
+                    case 'Division':
+                        result.innerHTML = parseFloat(numOne) / parseFloat(numTwo);
+                        esult.classList.remove('alert');
+                        result.classList.add('answer');
+                    break;
+                }
+            }
+            else {
+               result.classList.remove('answer'); 
+               result.innerHTML = 'Please enter numbers into the calculator.'
+               result.classList.add('alert');
+            }
+        }
+    
+    </script>
+
+</html>

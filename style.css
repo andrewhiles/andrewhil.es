@@ -1,0 +1,32 @@
+/* hold page styling */
+
+#main {
+	position: absolute;
+	top: 3em;
+	left: 3em;
+	width: 25em; }
+
+body { background: #339EFF; /* #E0E0E0 */ }
+
+hr { color: #bdd1eb;
+	background-color: #bdd1eb; }
+
+h1, p { 
+	color: #484848; 
+	font-family: "Helvetica Neue", Helvetica; 
+	font-size: 18px; 
+	line-height: 24px; 
+	margin-bottom: 22px; 
+	/* -webkit-font-smoothing: antialiased;
+	text-shadow: #333 0 1px 1px; */ }
+
+a { 
+	color: #484848; 
+	font-weight: bold; 
+	text-decoration: none; 
+	/* border-bottom: 1px solid rgba(255,255,255,0.3); */
+	border-bottom: #101010; }
+
+a:hover { 
+	border-bottom: 1px solid #bdd1eb; }
+	

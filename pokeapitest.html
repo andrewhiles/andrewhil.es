@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Andrew Hiles">
+
+    <!-- Google Fonts API link -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    <title>PokeAPI Test</title>
+
+    <style>
+
+        /* http://meyerweb.com/eric/tools/css/reset/ 
+           v2.0 | 20110126
+           License: none (public domain)
+        */
+
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed, 
+        figure, figcaption, footer, header, hgroup, 
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        .main {
+            padding-top: 3%;
+            padding-left: 20%;
+            padding-right: 20%;
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+
+        h2, p {
+            padding: 10px;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            border-top: 16px solid darkcyan;
+            background-color: whitesmoke;
+        }
+
+        p {
+            font-weight: bold;
+        }
+
+        span.attribute {
+            font-weight: normal;
+        }
+
+        ul {
+            padding-left: 40px;
+        }
+
+        /* If screen goes below 600px, respond... */
+        @media screen and (max-width: 600px) {
+            .main {
+              padding: 0px 0px 0px 12.5px;
+              width: 100%;
+              float: left;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="main">
+        <h1>PokeAPI Test</h1>
+        <!-- Holding container for image sprite -->
+        <img src="" id="sprite">
+        <p>Name:
+            <span id="name" class="attribute"></span>
+        </p>
+        <p>Abilities:</p>
+        <ul id="abilities"></ul>
+        <p>Happiness:
+            <span id="happiness" class="attribute"></span>
+        </p>
+        <p>Move:
+            <span id="move" class="attribute"></span>
+        </p>
+        <button id="fetch" role="button">Fetch :)</button>
+    </div>
+
+    <!-- JavaScript magic :) -->
+    <script>
+
+        // Get random pokemon number (0, 718)
+        function randomIntFromInterval(min,max){
+            return Math.floor( Math.random() * (max - min + 1) + min);
+        };
+
+        // Connect to PokeAPI
+        function fetch(url, callback) {
+            var callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+            var pokeurl = url + randomIntFromInterval(0,718).toString() + "/";
+            window[callbackName] = function(data) {
+                delete window[callbackName];
+                document.body.removeChild(script);
+                callback(data);
+            };
+
+            var script = document.createElement('script');
+            script.src = pokeurl + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName;
+            document.body.appendChild(script);
+        }
+
+        // Make a randomly generated pokemon
+        function fetchPokemon() {
+            // Get pokemon name...
+            fetch('http://pokeapi.co/api/v1/pokemon/', function(data) {
+               // Insert name into corresponding span
+               document.getElementById("name").innerHTML = data.name;
+               // Insert happiness level into corresponding span
+               document.getElementById("happiness").innerHTML = data.happiness;
+
+               // Loop over abilities collections and append them to an unordered list
+               var abilitiesList = document.getElementById("abilities");
+
+               // Clear abilities collection
+               abilitiesList.innerHTML = '';
+
+               for (var i=0; i < data.abilities.length; i++) {
+                var item = document.createElement('li');
+                item.appendChild(document.createTextNode(data.abilities[i].name));
+                abilitiesList.appendChild(item);                
+               }            
+            });
+
+            // Fetch pokemon image sprites
+            fetch("http://pokeapi.co/api/v1/sprite/", function(data) {
+                // Set the received sprite image as the img src for the main image in the HTML
+                document.getElementById("sprite").src = "http://pokeapi.co" + data.image;
+            });
+
+            // Fetch pokemon move
+            fetch("http://pokeapi.co/api/v1/move/", function(data) {
+                // Insert move into corresponding span
+                document.getElementById("move").innerHTML = data.description;
+            });
+        }
+
+        var button = document.getElementById("fetch");
+        // When the button is clicked, run the fetchPokemon function
+        button.addEventListener("click", fetchPokemon);
+    
+    </script>
+
+</body>
+
+</html>
