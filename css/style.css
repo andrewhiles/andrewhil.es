@@ -50,9 +50,9 @@ body {
 
 .introBlurb {
     padding-top: 15px;
-    font-size: 20px;
+    font-size: 24px;
     text-align: center;
-    color: DIMGRAY;
+    color: black;
 }
 
 .holdingContainer {
