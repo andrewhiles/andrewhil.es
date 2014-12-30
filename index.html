@@ -2,106 +2,14 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Andrew Hiles, Web Developer, Coder, Photographer, Christian, Irish">
     <meta name="author" content="Andrew Hiles">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
 
     <title>.: andrewhil.es :.</title>
-
-    <!-- Dirty in-page CSS -->
-    <style>
-
-    /* http://meyerweb.com/eric/tools/css/reset/ 
-       v2.0 | 20110126
-       License: none (public domain)
-    */
-
-    html, body, div, span, applet, object, iframe,
-    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-    a, abbr, acronym, address, big, cite, code,
-    del, dfn, em, img, ins, kbd, q, s, samp,
-    small, strike, strong, sub, sup, tt, var,
-    b, u, i, center,
-    dl, dt, dd, ol, ul, li,
-    fieldset, form, label, legend,
-    table, caption, tbody, tfoot, thead, tr, th, td,
-    article, aside, canvas, details, embed, 
-    figure, figcaption, footer, header, hgroup, 
-    menu, nav, output, ruby, section, summary,
-    time, mark, audio, video {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-size: 100%;
-        font: inherit;
-        vertical-align: baseline;
-    }
-
-    .mainImage {
-        max-width: 100%;
-        padding-bottom: 10px;
-    }
-
-    body {
-        font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Georgia";
-    }
-
-    .aboutContainer {
-        padding: 50px;
-    }
-
-    .mainImage {
-       opacity: 0.5;
-       transition: opacity 1s ease-in-out;
-       -moz-transition: opacity 1s ease-in-out;
-       -webkit-transition: opacity 1s ease-in-out;
-       }
-
-   .mainImage:hover {
-      opacity: 1;
-      }
-
-    .introBlurb {
-        padding-top: 15px;
-        font-size: 20px;
-        text-align: center;
-        color: DIMGRAY;
-    }
-
-    .holdingContainer {
-        padding: 0% 15% 0% 15%;
-        width: 70%;
-        height: 55%;
-    }
-
-    a.linx {
-        color: CADETBLUE;
-        text-decoration: none;
-    }
-
-    body {
-        border-top: 8px solid tomato;
-    }
-
-    @media screen and (max-width: 760px) {
-     .holdingContainer {
-          padding: 0 0 0 0;
-          width: 100%;
-          float: left;
-     }
-     
-     .mainImage {
-        padding-bottom: 0px;
-        opacity: 1; /* iOS doesn't handle CSS transition gracefully - temp workaround */
-        }
-    }
-
-
-    </style>
-
 </head>
 
 <body>
@@ -109,14 +17,15 @@
         <p class="introBlurb">Hi. My name's Andrew Hiles. I'm a web developer from Northern Ireland.</p>
         <p class="introBlurb">I'm currently working for <a class="linx" href="http://www.liberty-it.co.uk">Liberty Information Technology, Belfast</a>. You can <a class="linx" href="http://www.twitter.com/hiler88">tweet</a> me, check out my <a class="linx" href="http://www.instagram.com/hiler88">photographs</a>, peruse my <a class="linx" href="http://www.rdio.com/people/hiler88/">music</a> choices or simply send me an <a class="linx" href="mailto:me@andrewhil.es">email</a> :)</p>
     </div>
-
+    
+    <!-- Container div - JS will append images to this... -->
     <div class="holdingContainer">
     </div>
 
-    <!-- js source links... -->
+    <!-- jQuery source link -->
     <script src="js/jquery-2.1.1.js"></script>
 
-    <!-- jQuery -->
+    <!-- jQuery/JS logic (random image sorting) -->
     <script>
 
         $(document).ready(function() {
