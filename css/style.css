@@ -24,13 +24,25 @@ time, mark, audio, video {
     vertical-align: baseline;
 }
 
+/* Set images to be responsive in width */
 .mainImage {
     max-width: 100%;
     padding-bottom: 10px;
 }
 
 body {
-    font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Georgia";
+  font-family: "Merriweather", serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: #3A4145;
+}
+
+h1 {
+    font-size: 28px;
+    color: #4A4A4A;
+    line-height: 2.15em;
+    font-weight: 700;
+    text-align: center;
 }
 
 .aboutContainer {
@@ -50,7 +62,6 @@ body {
 
 .introBlurb {
     padding-top: 15px;
-    font-size: 24px;
     text-align: center;
     color: black;
 }
@@ -61,13 +72,24 @@ body {
     height: 55%;
 }
 
-a.linx {
-    color: CADETBLUE;
-    text-decoration: none;
+a {
+  /* Older browser fallback */
+  color: orange;
+  text-decoration: none;
+  /* CSS3 transition */
+  -o-transition: 1s;
+  -ms-transition: 1s;
+  -moz-transition: 1s;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+a:hover { 
+  color: darkred; 
 }
 
 body {
-    border-top: 8px solid tomato;
+    border-top: 8px solid goldenrod;
 }
 
 @media screen and (max-width: 760px) {
