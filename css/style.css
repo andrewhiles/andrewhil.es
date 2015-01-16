@@ -88,8 +88,40 @@ a:hover {
   color: darkred; 
 }
 
-body {
-    border-top: 8px solid goldenrod;
+.banner {
+  width:100%;
+}
+
+ul {
+  list-style:none;
+  width:100%;
+  font-size:0;
+}
+
+li {
+  display:inline-block;
+  width:20%;
+  height:7px;
+}
+
+li:nth-child(1) {
+  background:#2ecc71;
+}
+
+li:nth-child(2) {
+  background:#3498db;
+}
+
+li:nth-child(3) {
+  background:#f1c40f;
+}
+
+li:nth-child(4) {
+  background:#e74c3c;
+}
+
+li:nth-child(5) {
+  background:#9b59b6;
 }
 
 @media screen and (max-width: 760px) {
